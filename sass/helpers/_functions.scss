@@ -1,0 +1,18 @@
+///function to get elemnt hight
+/// 
+/// @param {size}
+/// element widht
+/// @return {int}
+
+@function helf($size){
+    @return $size / 2
+};
+
+
+@function calclute($sizes...){
+    $total: 0;
+    @each $size in $sizes{
+        $total : $total + $size
+    }
+    @return $total;
+}

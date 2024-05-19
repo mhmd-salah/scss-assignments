@@ -1,0 +1,156 @@
+// import global rules
+@use './sass/layout/global-rules';
+
+@use "./sass/pages/contact";
+
+@use "./sass/vars/colors" as *;
+
+@use "./sass/helpers/functions" as *;
+@use "./sass/helpers/Mixins" as *;
+
+//  1
+.content {
+    >.box {
+        padding: 15px;
+
+        >.title {
+            font-size: 10px;
+        }
+    }
+
+    .cat {
+        padding: 15px;
+    }
+
+    &.premium::before {
+        content: "premium box";
+    }
+
+    &.premium:hover {
+        background-color: #eee;
+    }
+}
+
+// 2
+.class {
+    > {
+        .child {
+            padding: 10px;
+        }
+    }
+}
+
+.class> {
+    .child {
+        padding: 10px;
+    }
+}
+
+.class {
+    >.child {
+        padding: 10px;
+    }
+}
+
+//3
+
+.class {
+    font: {
+        weight: bold;
+        size: 20px
+    }
+
+    ;
+}
+
+//4 
+.parent {
+    &+.sibling {
+        margin: auto {
+            top: 10px;
+        }
+
+        &~.last {
+            padding: 10px;
+        }
+    }
+}
+
+/// @output :
+/// .parent + .sibling{
+///     margin:auto;
+///     margin-top:10px
+/// }
+/// .parent + sibling ~ .last{
+///     padding 10px
+/// }
+
+
+// 5 
+
+// .widget {
+//     background-color: white;
+//     padding: 20px;
+// }
+
+// .main-border {
+//     border: 1px solid #CCC
+// }
+
+// .my-class {
+//     font-weight: bold;
+//     margin: 20px auto;
+//     @extend .widget;
+//     @extend .main-border;
+// }
+
+// 6
+
+%widget {
+    background-color: white;
+    padding: 20px;
+}
+
+%main-border {
+    border: 1px solid #CCC
+}
+
+.my-class {
+    @extend %widget
+};
+.my-class{
+    @extend %main-border
+}
+.my-class{
+    font-weight: bold;
+    max-width: 20px auto;
+}
+// 7
+
+.box{
+    h2{
+        font-size: 20;
+    }
+    p{
+        @extend h2;
+    }
+}
+@mixin breakpoint ($name){
+    @if($name == mobile){
+        @media(max-width:575px){
+            @content;
+        }
+    }
+}
+@include breakpoint(mobile){
+    .box{
+        h2,p{
+            font-size:16px;
+        }
+        h2 span,p span{
+            font-weight: bold;
+        }
+    }
+}
+//8
+
