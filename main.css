@@ -1,11 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-.contact {
-  background-color: red;
-}
-
 .content > .box {
   padding: 15px;
 }
@@ -65,10 +57,28 @@
   font-size: 20;
 }
 @media (max-width: 575px) {
-  .box h2, .box p {
+  .box h2,
+  .box p {
     font-size: 16px;
   }
-  .box h2 span, .box p span {
+  .box h2 span,
+  .box p span {
     font-weight: bold;
   }
+}
+.box a {
+  color: #009688;
+}
+.box a:hover {
+  color: #e91e63;
+}
+
+.box {
+  font-size: 20px;
+}
+.box-holder {
+  width: 1000px;
+}
+.box-holder-content {
+  margin: auto;
 }/*# sourceMappingURL=main.css.map */

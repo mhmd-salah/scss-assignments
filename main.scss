@@ -1,12 +1,11 @@
-// import global rules
-@use './sass/layout/global-rules';
+// import file 
+@use "./helpers/vars" as *;
+@use "./helpers/functions" as *;
+@use "./layout/header";
+@use "./layout/footer";
 
-@use "./sass/pages/contact";
 
-@use "./sass/vars/colors" as *;
 
-@use "./sass/helpers/functions" as *;
-@use "./sass/helpers/Mixins" as *;
 
 //  1
 .content {
@@ -117,40 +116,80 @@
 
 .my-class {
     @extend %widget
-};
-.my-class{
+}
+
+;
+
+.my-class {
     @extend %main-border
 }
-.my-class{
+
+.my-class {
     font-weight: bold;
     max-width: 20px auto;
 }
+
 // 7
 
-.box{
-    h2{
+.box {
+    h2 {
         font-size: 20;
     }
-    p{
+
+    p {
         @extend h2;
     }
 }
-@mixin breakpoint ($name){
-    @if($name == mobile){
-        @media(max-width:575px){
+
+@mixin breakpoint ($name) {
+    @if($name ==mobile) {
+        @media(max-width:575px) {
             @content;
         }
     }
 }
-@include breakpoint(mobile){
-    .box{
-        h2,p{
-            font-size:16px;
+
+@include breakpoint(mobile) {
+    .box {
+
+        h2,
+        p {
+            font-size: 16px;
         }
-        h2 span,p span{
+
+        h2 span,
+        p span {
             font-weight: bold;
         }
     }
 }
+
 //8
 
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+$link-color: $green;
+$link-hover:$red;
+// Do Not Edit Here
+.box a {
+    color: $link-color;
+
+    &:hover {
+        color: $link-hover;
+    }
+}
+
+// 9 ;
+
+//10 
+.box{
+    font-size: 20px;
+    &-holder{
+        width: 1000px;
+        &-content{
+            margin: auto;
+        }
+    }
+}
