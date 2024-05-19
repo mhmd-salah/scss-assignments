@@ -256,5 +256,14 @@ $theme: light;
 
 //  5
 
-$number : 10;
+$number : 9;
+
+.box{
+    @if($number == 10 or $number == 9){
+        background-color: #eee;
+        @if($number == 10){
+            text-align: center
+        }
+    }
+}
 
