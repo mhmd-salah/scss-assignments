@@ -1,6 +1,7 @@
 // import file 
 @use "./helpers/vars" as *;
 @use "./helpers/functions" as *;
+@use "./helpers/Mixin" as *;
 @use "./layout/header";
 @use "./layout/footer";
 
@@ -171,7 +172,8 @@ $green: #009688;
 
 // Add What You Want Here
 $link-color: $green;
-$link-hover:$red;
+$link-hover: $red;
+
 // Do Not Edit Here
 .box a {
     color: $link-color;
@@ -184,11 +186,13 @@ $link-hover:$red;
 // 9 ;
 
 //10 
-.box{
+.box {
     font-size: 20px;
-    &-holder{
+
+    &-holder {
         width: 1000px;
-        &-content{
+
+        &-content {
             margin: auto;
         }
     }
@@ -203,19 +207,24 @@ $child: "box";
 $language: "en"; // English
 $gap: 20px;
 
-.#{$main}{
+.#{$main} {
     padding: 20px;
-    @if($language =="en"){
+
+    @if($language =="en") {
         direction: ltr;
-    }@else{
+    }
+
+    @else {
         direction: rtl;
     }
+
     margin-left: $gap;
 
-    .#{$main}-#{$child}{
-    padding: $gap / 2;
+    .#{$main}-#{$child} {
+        padding: $gap / 2;
     }
-    &:hover .#{$main}.#{$main}-#{$child}{
+
+    &:hover .#{$main}.#{$main}-#{$child} {
         background-color: #eee;
     }
 }
@@ -248,8 +257,9 @@ $alt-color: blue;
 $number: 10;
 $color: red;
 $theme: light;
-.class{
-    @if $number > 5 & $color == red & $theme != dark{
+
+.class {
+    @if $number >5 & $color ==red & $theme !=dark {
         color: red;
     }
 }
@@ -258,12 +268,105 @@ $theme: light;
 
 $number : 9;
 
-.box{
-    @if($number == 10 or $number == 9){
+.box {
+    @if($number ==10 or $number ==9) {
         background-color: #eee;
-        @if($number == 10){
+
+        @if($number ==10) {
             text-align: center
         }
     }
 }
 
+// topic 3 
+
+// 1
+
+$direction: left;
+
+.element {
+    position: relative;
+    @include square(150px, 200px);
+    margin: 50px auto;
+
+    &::before {
+        content: "";
+        @include arrow($direction);
+    }
+
+}
+
+// 2
+
+$grid_cols : 16;
+
+@for $i from 1 through $grid_cols {
+    .col-#{$i} {
+        width: percentage($i / $grid_cols);
+    }
+}
+
+
+// 3
+
+$names: "books" 20px red 18,
+    "games" 30px green 18,
+    "dvds" 20px blue;
+
+@each $name , $padd, $color, $num in $names {
+    .#{$name} {
+        padding: $padd;
+        font-size: if($num, $num, 16px);
+        border: 2px solid $color;
+        color: #444;
+    }
+}
+
+;
+// 4;
+
+$init : 1;
+
+@while $init <=5 {
+    .circle-#{$init * 100} {
+        width:#{$init * 100px};
+        height:#{$init * 100px};
+        border-radius: #{$init * 100px / 2};
+    }
+
+    $init: $init + 1
+}
+
+// 5
+
+@for $i from $init through 5 {
+    .circle-#{$init * 100} {
+        width: #{$init * 100};
+        height: #{$init * 100};
+        border-radius: #{$init * 100 / 2};
+    }
+}
+
+// 6
+textarea {
+    @include placeholder {
+        color: #777;
+    }
+}
+
+
+// 7
+@mixin flex-center($width : 400px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+}
+
+.box-one {
+    @include flex-center(400px);
+}
+
+.box-two {
+    @include flex-center;
+}

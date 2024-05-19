@@ -1,0 +1,50 @@
+
+@mixin square ($w,$h){
+  width: $w;
+  height: $h;
+  background-color: #f6f7f8;
+}
+@mixin arrow($direction){
+  position: absolute;
+  border: 20px solid transparent;
+  @if($direction == top){
+    border-bottom-color:red ;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }@else if($direction == right){
+    border-left-color:red ;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }@else if($direction == bottom){
+    border-top-color:red ;
+    #{$direction}: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }@else if($direction == left){
+    border-right-color:red ;
+    #{$direction}: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+// 6
+@mixin placeholder {
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &:-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
