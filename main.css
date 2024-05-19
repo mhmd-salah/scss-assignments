@@ -275,4 +275,33 @@ textarea:-ms-input-placeholder {
   justify-content: center;
   align-items: center;
   width: 400px;
+}
+
+.box-100 {
+  width: 100px;
+  height: 200px;
+}
+
+.box-200 {
+  width: 200px;
+  height: 400px;
+}
+
+.box-400 {
+  width: 400px;
+  height: 800px;
+}
+
+.box-800 {
+  width: 800px;
+  height: 1600px;
+}
+
+.box-1600 {
+  width: 1600px;
+  height: 3200px;
+}
+
+.bod {
+  top: 170px;
 }/*# sourceMappingURL=main.css.map */

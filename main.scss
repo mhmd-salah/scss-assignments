@@ -370,3 +370,37 @@ textarea {
 .box-two {
     @include flex-center;
 }
+
+// topic 4;
+
+// 1
+$num: 2px;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@for $i from 1 through 5{
+    .box-#{$start}{
+        width: #{$start}px;
+        height: double($start);
+    }
+    $start:$start * 2
+}
+
+// 2
+
+@function get-total($nums...){
+    $total:0px;
+    @each $numm in $nums{
+        $total : $total + $numm
+    }
+    @return $total
+};
+
+.bod{
+    top: get-total(100,50,20);
+}
+
+// the end
